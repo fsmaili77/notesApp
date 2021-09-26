@@ -16,15 +16,15 @@ public class ClasseControler {
     @Autowired
     private ClasseDao classeDao;
 
-    @GetMapping(value = "Classes")
+    @GetMapping(value = "/Classes")
     public List<Classe>getClasses() {
         return classeDao.findAll();
     }
-    @GetMapping(value = "Classes/{id}")
+    @GetMapping(value = "/Classes/{id}")
     public Optional<Classe>getClassesById(@PathVariable Integer id) {
         return classeDao.findById(id);
     }
-    @PostMapping(value = "Classes")
+    @PostMapping(value = "/Classes")
     public ResponseEntity<Void>addClasses(@RequestBody Classe classe) {
         Classe newClasse = classeDao.save(classe);
         if (newClasse == null) {
@@ -41,7 +41,7 @@ public class ClasseControler {
         if (classe != null) classeDao.deleteById(id);
         return ResponseEntity.noContent().build();
     }
-
+    @PutMapping(value = "/Classes")
     public void updateClasses(@RequestBody Classe classe){
         classeDao.save(classe);
     }

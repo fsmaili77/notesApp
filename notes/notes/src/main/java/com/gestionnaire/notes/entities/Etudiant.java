@@ -11,7 +11,7 @@ public class Etudiant implements Serializable {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int idEtudiant;
     private String nom;
     private String prenom;
     private Date dateNaissance;
@@ -20,20 +20,20 @@ public class Etudiant implements Serializable {
     public Etudiant() {
     }
 
-    public Etudiant(int id, String nom, String prenom, Date dateNaissance, String email) {
-        this.id = id;
+    public Etudiant(int idEtudiant, String nom, String prenom, Date dateNaissance, String email) {
+        this.idEtudiant = idEtudiant;
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
         this.email = email;
     }
 
-    public int getId() {
-        return id;
+    public int getIdEtudiant() {
+        return idEtudiant;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEtudiant(int idEtudiant) {
+        this.idEtudiant = idEtudiant;
     }
 
     public String getNom() {
@@ -71,7 +71,7 @@ public class Etudiant implements Serializable {
     @Override
     public String toString() {
         return "Etudiant{" +
-                "id=" + id +
+                "idEtudiant=" + idEtudiant +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", dateNaissance=" + dateNaissance +
