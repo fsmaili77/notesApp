@@ -1,21 +1,31 @@
 package com.gestionnaire.notes.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Etudiant implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "etudiant_generator")
+    @SequenceGenerator(name = "etudiant_generator", sequenceName = "etudiant_sequence", initialValue = 5)
+    @Column(name = "etudiantId")
     private int idEtudiant;
     private String nom;
     private String prenom;
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date dateNaissance;
     private String email;
+
+    @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Notes> notesList = new ArrayList<>();
 
     public Etudiant() {
     }
