@@ -1,14 +1,26 @@
 package com.gestionnaire.notes.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Classe implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "classes_generator")
+    @SequenceGenerator(name = "classes_generator", sequenceName = "classes_sequence", initialValue = 3)
+    @Column(name = "classesId")
     private int idClasse;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_matiereId", referencedColumnName = "matiereId")
+    @JsonBackReference
+    private Matiere matiere;
+
+
     private String nomClasse;
     private String periode;
 

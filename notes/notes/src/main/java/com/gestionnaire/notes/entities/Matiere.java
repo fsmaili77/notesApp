@@ -1,16 +1,25 @@
 package com.gestionnaire.notes.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Matiere implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "matieres_generator")
+    @SequenceGenerator(name = "matieres_generator", sequenceName = "matieres_sequence", initialValue = 2)
+    @Column(name = "matiereId")
     private int idMatiere;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_noteId", referencedColumnName = "noteId")
+    @JsonBackReference
+    private Notes notes;
+
     private String nomMatiere;
 
     public Matiere() {
