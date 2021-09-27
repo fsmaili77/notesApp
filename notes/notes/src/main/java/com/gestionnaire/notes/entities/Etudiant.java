@@ -11,7 +11,9 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "Etudiant")
 public class Etudiant implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "etudiant_generator")
@@ -24,7 +26,7 @@ public class Etudiant implements Serializable {
     private Date dateNaissance;
     private String email;
 
-    @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Notes> notesList = new ArrayList<>();
 

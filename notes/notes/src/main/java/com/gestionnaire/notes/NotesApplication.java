@@ -6,11 +6,13 @@ import com.gestionnaire.notes.entities.Matiere;
 import com.gestionnaire.notes.entities.Notes;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+@Configuration
 
 @SpringBootApplication
 public class NotesApplication {

@@ -7,7 +7,9 @@ import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "Notes")
 public class Notes implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notes_generator")
@@ -15,7 +17,7 @@ public class Notes implements Serializable {
     @Column(name = "noteId")
     private int idNote;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_etudiantId", referencedColumnName = "etudiantId")
     @JsonBackReference
     private Etudiant etudiant;

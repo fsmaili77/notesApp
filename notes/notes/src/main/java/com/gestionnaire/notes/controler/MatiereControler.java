@@ -11,12 +11,13 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
 public class MatiereControler {
 
     @Autowired
     private MatiereDao matiereDao;
 
-    @GetMapping
+    @GetMapping(value = "/Matieres")
     public List<Matiere>getMatieres() {
         return matiereDao.findAll();
     }
@@ -36,13 +37,13 @@ public class MatiereControler {
                 .buildAndExpand(newMatiere.getIdMatiere()).toUri();
         return ResponseEntity.created(location).build();
     }
-    @DeleteMapping
+    @DeleteMapping(value = "/Matieres/{id}")
     public ResponseEntity<Void>deleteMatieres(@PathVariable int id) {
         Optional<Matiere> matiere = matiereDao.findById(id);
         if (matiere != null) matiereDao.deleteById(id);
         return ResponseEntity.noContent().build();
     }
-    @PutMapping
+    @PutMapping(value = "/Matieres")
     public void updateMatieres(@RequestBody Matiere matiere) {
         matiereDao.save(matiere);
     }
