@@ -29,11 +29,11 @@ public class Notes implements Serializable {
     public Notes() {
     }
 
-    public Notes(int idNote, int noteEcrit, int noteOral, double noteMoyenne) {
+    public Notes(int idNote, int noteEcrit, int noteOral) {
         this.idNote = idNote;
         this.noteEcrit = noteEcrit;
         this.noteOral = noteOral;
-        this.noteMoyenne = noteMoyenne;
+        //this.noteMoyenne = noteMoyenne;
     }
 
     public int getIdNote() {
@@ -60,13 +60,13 @@ public class Notes implements Serializable {
         this.noteOral = noteOral;
     }
 
-    public double getNoteMoyenne() {
+    /*public double getNoteMoyenne() {
         return noteMoyenne;
     }
 
     public void setNoteMoyenne(double noteMoyenne) {
         this.noteMoyenne = noteMoyenne;
-    }
+    }*/
 
     @Override
     public String toString() {
@@ -74,7 +74,17 @@ public class Notes implements Serializable {
                 "idNote=" + idNote +
                 ", noteEcrit=" + noteEcrit +
                 ", noteOral=" + noteOral +
-                ", noteMoyenne=" + noteMoyenne +
+                ", noteMoyenne=" + afficherNoteMoyenne() +
                 '}';
+    }
+    public double afficherNoteMoyenne(){
+        return ((double) noteEcrit + noteOral)/2;
+    }
+    public double afficherNoteMoyenneGenerale(){
+        double moyenneGenerale = 0;
+
+
+
+        return moyenneGenerale;
     }
 }

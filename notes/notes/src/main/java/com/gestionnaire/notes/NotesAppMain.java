@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class NotesAppMain {
     public static void main(String[] args) throws ParseException {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        /*DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Matiere francais = new Matiere(1, "Français");
 
         Etudiant etudiant = new Etudiant(2, "jean", "bill", df.parse("2000-11-22"), "jean@gmail.com");
@@ -19,6 +19,6 @@ public class NotesAppMain {
 
         System.out.println(etudiant.toString());
         Notes notes = new Notes(22, 12, 14, 13);
-        System.out.println(notes.toString());
+        System.out.println(notes.toString());*/
     }
 }
