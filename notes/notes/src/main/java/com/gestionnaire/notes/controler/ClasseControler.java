@@ -1,3 +1,4 @@
+/*
 package com.gestionnaire.notes.controler;
 
 import com.gestionnaire.notes.dao.ClasseDao;
@@ -47,3 +48,4 @@ public class ClasseControler {
         classeDao.save(classe);
     }
 }
+*/

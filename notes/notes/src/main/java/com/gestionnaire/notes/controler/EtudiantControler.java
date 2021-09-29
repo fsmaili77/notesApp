@@ -25,7 +25,7 @@ public class EtudiantControler {
     public Optional<Etudiant>getEtudiantsById(@PathVariable Integer id) {
         return etudiantDao.findById(id);
     }
-    @PostMapping(value = "Etudiants")
+    @PostMapping(value = "/Etudiants")
     public ResponseEntity<Void>addEtudiants(@RequestBody Etudiant etudiant) {
         Etudiant newEtudiant = etudiantDao.save(etudiant);
         if (newEtudiant == null) {

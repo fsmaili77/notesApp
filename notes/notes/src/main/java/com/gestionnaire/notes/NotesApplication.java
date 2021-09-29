@@ -1,6 +1,6 @@
 package com.gestionnaire.notes;
 
-import com.gestionnaire.notes.entities.Classe;
+//import com.gestionnaire.notes.entities.Classe;
 import com.gestionnaire.notes.entities.Etudiant;
 import com.gestionnaire.notes.entities.Matiere;
 import com.gestionnaire.notes.entities.Notes;
@@ -25,13 +25,14 @@ public class NotesApplication {
         Notes notes1 = new Notes(7, 16, 10);
 		Etudiant etudiant = new Etudiant(15, "K", "N", df.parse("1999-12-15"), "kante@gmail.com");
 		Matiere matiere = new Matiere(12, "Francais");
-		Classe classe = new Classe(22, "TroisiemeA", "1ère Trimestre");
+		//Classe classe = new Classe(22, "TroisiemeA", "1ère Trimestre");
         System.out.println(notes.toString());
         System.out.println(notes1.toString());
 		System.out.println(etudiant.toString());
 
+
 		//System.out.println(matiere.toString());
-		System.out.println(classe.toString());
+		//System.out.println(classe.toString());
 
 
 	}

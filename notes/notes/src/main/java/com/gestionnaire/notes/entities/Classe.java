@@ -1,3 +1,4 @@
+/*
 package com.gestionnaire.notes.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -68,3 +69,4 @@ public class Classe implements Serializable {
                 '}';
     }
 }
+*/

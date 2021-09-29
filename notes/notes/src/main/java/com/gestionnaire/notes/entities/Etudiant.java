@@ -27,7 +27,7 @@ public class Etudiant implements Serializable {
     private String email;
 
     @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    //@JsonManagedReference
     private List<Notes> notesList = new ArrayList<>();
 
     public Etudiant() {
@@ -100,6 +100,7 @@ public class Etudiant implements Serializable {
                 ", notesList=" + notesList +
                 '}';
     }
+
     /*public int getIdEtudiant() {
         return idEtudiant;
     }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -19,8 +20,13 @@ public class Notes implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_etudiantId", referencedColumnName = "etudiantId")
-    @JsonBackReference
+   // @JsonBackReference
     private Etudiant etudiant;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_matiereId", referencedColumnName = "matiereId")
+    @JsonBackReference
+    private Matiere matiere;
 
     private int noteEcrit;
     private int noteOral;
@@ -80,11 +86,6 @@ public class Notes implements Serializable {
     public double afficherNoteMoyenne(){
         return ((double) noteEcrit + noteOral)/2;
     }
-    public double afficherNoteMoyenneGenerale(){
-        double moyenneGenerale = 0;
 
 
-
-        return moyenneGenerale;
-    }
 }

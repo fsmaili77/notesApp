@@ -11,14 +11,23 @@ import java.util.Date;
 
 public class NotesAppMain {
     public static void main(String[] args) throws ParseException {
-        /*DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Matiere francais = new Matiere(1, "Français");
 
-        Etudiant etudiant = new Etudiant(2, "jean", "bill", df.parse("2000-11-22"), "jean@gmail.com");
-        System.out.println(francais.toString());
+        String [] listSujets = {"Français", "Anglais", "Math", "SVT", "Histoire et Geographie",
+            "Technologie", "Arts Plastiques", "Education Musicale",
+            "Education phisique et sportive", "Vie Scolaire", "Math"};
+        int count = countOccurances(listSujets, "Math");
+        System.out.println(count);
 
-        System.out.println(etudiant.toString());
-        Notes notes = new Notes(22, 12, 14, 13);
-        System.out.println(notes.toString());*/
-    }
+        }
+        public static int countOccurances(
+            String [] listSujets, String searchMatiere
+            ) {
+            int count = 0;
+            for (String matiere : listSujets) {
+                if (matiere == searchMatiere){
+                    count++;
+                }
+            }
+            return count;
+        }
 }

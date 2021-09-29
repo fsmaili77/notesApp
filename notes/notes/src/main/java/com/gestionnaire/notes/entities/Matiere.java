@@ -17,10 +17,10 @@ public class Matiere implements Serializable {
     @Column(name = "matiereId")
     private int idMatiere;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_noteId", referencedColumnName = "noteId")
     @JsonBackReference
-    private Notes notes;
+    private Notes notes;*/
 
     private String nomMatiere;
 
