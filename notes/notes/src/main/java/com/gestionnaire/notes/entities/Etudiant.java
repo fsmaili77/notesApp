@@ -17,7 +17,7 @@ public class Etudiant implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "etudiant_generator")
-    @SequenceGenerator(name = "etudiant_generator", sequenceName = "etudiant_sequence", initialValue = 4)
+    @SequenceGenerator(name = "etudiant_generator", sequenceName = "etudiant_sequence", initialValue = 9)
     @Column(name = "etudiantId")
     private int idEtudiant;
     private String nom;
@@ -26,7 +26,7 @@ public class Etudiant implements Serializable {
     private Date dateNaissance;
     private String email;
 
-    @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     //@JsonManagedReference
     private List<Notes> notesList = new ArrayList<>();
 
@@ -100,55 +100,18 @@ public class Etudiant implements Serializable {
                 ", notesList=" + notesList +
                 '}';
     }
+    public void addNoteToList(Notes notesL){
+        notesList.add(notesL);
+    }
+    public int getNotesListSize(){
+        return notesList.size();
+    }
+    public void calculateAvg(){
+        double n = 0;
+        for (int i = 0; i < this.getNotesListSize(); i++) {
 
-    /*public int getIdEtudiant() {
-        return idEtudiant;
+        }
+
     }
 
-    public void setIdEtudiant(int idEtudiant) {
-        this.idEtudiant = idEtudiant;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public Date getDateNaissance() {
-        return dateNaissance;
-    }
-
-    public void setDateNaissance(Date dateNaissance) {
-        this.dateNaissance = dateNaissance;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "Etudiant{" +
-                "idEtudiant=" + idEtudiant +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", dateNaissance=" + dateNaissance +
-                ", email='" + email + '\'' +
-                '}';
-    }*/
 }

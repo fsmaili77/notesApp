@@ -36,6 +36,14 @@ public class NotesControler {
                 .buildAndExpand(newNote.getIdNote()).toUri();
         return ResponseEntity.created(location).build();
     }
+    /*@PostMapping(path="/Notes")
+    public Notes addNotes(@RequestBody Notes notes) throws Exception {
+        if (notes == null) {
+            throw new Exception("Name not found.");
+        }
+        return notesDao.save(notes);
+    }*/
+
     @DeleteMapping(value = "/Notes/{id}")
     public ResponseEntity<Void>deleteNotes(@PathVariable int id) {
         Optional<Notes> notes = notesDao.findById(id);
