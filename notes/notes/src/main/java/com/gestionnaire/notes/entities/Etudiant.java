@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -89,7 +90,7 @@ public class Etudiant implements Serializable {
         this.notesList = notesList;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Etudiant{" +
                 "idEtudiant=" + idEtudiant +
@@ -99,19 +100,24 @@ public class Etudiant implements Serializable {
                 ", email='" + email + '\'' +
                 ", notesList=" + notesList +
                 '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return "Etudiant:" +'\n' +
+            "idEtudiant=" + idEtudiant + '\n' +
+            "Nom=" + nom + '\n' +
+            "Prenom='" + prenom + '\n' +
+            "Date de naissance=" + dateNaissance + '\n' +
+            "Email=" + email + '\n'
+            ;
     }
+
     public void addNoteToList(Notes notesL){
         notesList.add(notesL);
     }
     public int getNotesListSize(){
         return notesList.size();
-    }
-    public void calculateAvg(){
-        double n = 0;
-        for (int i = 0; i < this.getNotesListSize(); i++) {
-
-        }
-
     }
 
 }

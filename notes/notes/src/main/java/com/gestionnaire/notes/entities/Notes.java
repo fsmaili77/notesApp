@@ -74,14 +74,22 @@ public class Notes implements Serializable {
         this.noteMoyenne = noteMoyenne;
     }
 
+   /* @Override
+    public String toString() {
+        return "Notes: " +'\n' +
+                "idNote=" + idNote +'\n' +
+                " noteEcrit=" + noteEcrit +'\n' +
+                " noteOral=" + noteOral +'\n' +
+                " noteMoyenne=" + afficherNoteMoyenne() +'\n'
+                ;
+    }*/
     @Override
     public String toString() {
-        return "Notes{" +
-                "idNote=" + idNote +
-                ", noteEcrit=" + noteEcrit +
-                ", noteOral=" + noteOral +
-                ", noteMoyenne=" + afficherNoteMoyenne() +
-                '}';
+        return
+            " noteEcrit=" + noteEcrit +'\n' +
+            " noteOral=" + noteOral +'\n' +
+            " noteMoyenne=" + afficherNoteMoyenne() +'\n'
+            ;
     }
     public double afficherNoteMoyenne(){
         return ((double) noteEcrit + noteOral)/2;
