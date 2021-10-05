@@ -20,7 +20,7 @@ public class Etudiant implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "etudiant_generator")
     @SequenceGenerator(name = "etudiant_generator", sequenceName = "etudiant_sequence", initialValue = 9)
     @Column(name = "etudiantId")
-    private int idEtudiant;
+    private int id;
     private String nom;
     private String prenom;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -34,8 +34,8 @@ public class Etudiant implements Serializable {
     public Etudiant() {
     }
 
-    public Etudiant(int idEtudiant, String nom, String prenom, Date dateNaissance, String email) {
-        this.idEtudiant = idEtudiant;
+    public Etudiant(int id, String nom, String prenom, Date dateNaissance, String email) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
@@ -43,11 +43,11 @@ public class Etudiant implements Serializable {
     }
 
     public int getIdEtudiant() {
-        return idEtudiant;
+        return id;
     }
 
     public void setIdEtudiant(int idEtudiant) {
-        this.idEtudiant = idEtudiant;
+        this.id = idEtudiant;
     }
 
     public String getNom() {
@@ -105,7 +105,7 @@ public class Etudiant implements Serializable {
     @Override
     public String toString() {
         return "Etudiant:" +'\n' +
-            "idEtudiant=" + idEtudiant + '\n' +
+            "idEtudiant=" + id + '\n' +
             "Nom=" + nom + '\n' +
             "Prenom='" + prenom + '\n' +
             "Date de naissance=" + dateNaissance + '\n' +
@@ -116,8 +116,8 @@ public class Etudiant implements Serializable {
     public void addNoteToList(Notes notesL){
         notesList.add(notesL);
     }
-    public int getNotesListSize(){
+    /*public int getNotesListSize(){
         return notesList.size();
-    }
+    }*/
 
 }

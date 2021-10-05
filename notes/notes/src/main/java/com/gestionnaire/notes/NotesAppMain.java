@@ -19,16 +19,16 @@ public class NotesAppMain {
         int count = countOccurances(listSujets, "Math");
         System.out.println(count);*/
 
-        System.out.println("//////////////////////////////////////////////");
+       /* System.out.println("//////////////////////////////////////////////");
 
         Notes notes = new Notes();
         //System.out.println(notes);
 
-        /*Notes notes1 = new Notes();
-        System.out.println();*/
+        *//*Notes notes1 = new Notes();
+        System.out.println();*//*
 
-        /*Etudiant etudiant = new Etudiant();
-        System.out.println(etudiant);*/
+        *//*Etudiant etudiant = new Etudiant();
+        System.out.println(etudiant);*//*
         Matiere francais = new Matiere(5, "Français");
         Matiere anglais = new Matiere(6, "Anglais");
 
@@ -60,7 +60,7 @@ public class NotesAppMain {
         System.out.println("Matière : "+francais.getNomMatiere());
         System.out.println(e2.getNotesList().get(0));
         System.out.println("Matière : "+anglais.getNomMatiere());
-        System.out.println(e2.getNotesList().get(1));
+        System.out.println(e2.getNotesList().get(1));*/
 
     }
 

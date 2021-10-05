@@ -26,6 +26,7 @@ public class MatiereControler {
     public Optional<Matiere>getMatieresById(@PathVariable Integer id) {
         return matiereDao.findById(id);
     }
+
     @PostMapping(value = "/Matieres")
     public ResponseEntity<Void>addMatieres(@RequestBody Matiere matiere) {
         Matiere newMatiere = matiereDao.save(matiere);

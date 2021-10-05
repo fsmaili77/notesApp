@@ -88,7 +88,7 @@ public class Notes implements Serializable {
         return
             " noteEcrit=" + noteEcrit +'\n' +
             " noteOral=" + noteOral +'\n' +
-            " noteMoyenne=" + afficherNoteMoyenne() +'\n'
+            " noteMoyenne=" + afficherNoteMoyenne() + '\n'
             ;
     }
     public double afficherNoteMoyenne(){
