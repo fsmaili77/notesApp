@@ -3,9 +3,11 @@ package com.gestionnaire.notes.service;
 
 import com.gestionnaire.notes.dao.EtudiantDao;
 import com.gestionnaire.notes.entities.Etudiant;
+import com.gestionnaire.notes.entities.Notes;
 import com.gestionnaire.notes.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -38,4 +40,16 @@ public class EtudiantService {
     public void deleteEtudiant(Integer id) {
         etudiantDao.deleteEtudiantById(id);
     }
+
+
+    public double getMoyForEtudiant(Integer id) {
+        Etudiant e = this.findEtudiantById(id);
+        List<Notes> notes = e.getNotesList();
+        double sum = 0;
+        for (Notes n : notes){ sum = sum+n.afficherNoteMoyenne();}
+        double resultat = sum/notes.size();
+
+        return resultat;
+    }
+
 }

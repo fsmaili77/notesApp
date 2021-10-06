@@ -8,6 +8,7 @@ import java.util.Optional;
 
 
 public interface EtudiantDao extends JpaRepository<Etudiant, Integer> {
+
     void deleteEtudiantById(Integer id);
 
     Optional<Etudiant> findEtudiantById(Integer id);

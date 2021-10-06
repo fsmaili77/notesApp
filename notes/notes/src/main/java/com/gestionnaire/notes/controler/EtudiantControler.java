@@ -57,13 +57,7 @@ public class EtudiantControler {
     //Moyenne générale d'un étudiant
     @GetMapping(value = "/Etudiants/{id}/moy")
     public double getMoyForEtudiant(@PathVariable Integer id) {
-        Etudiant e = etudiantService.findEtudiantById(id);
-        List<Notes> notes = e.getNotesList();
-        double sum = 0;
-        for (Notes n : notes){ sum = sum+n.afficherNoteMoyenne();}
-        double resultat = sum/notes.size();
-
-        return resultat;
+        return etudiantService.getMoyForEtudiant(id);
     }
 
     //Moyenne générale de tous les étudiants (Moyenne de la classe)
@@ -72,7 +66,7 @@ public class EtudiantControler {
         List<Etudiant> ets = etudiantService.findAllEtudiants();
         double sum = 0;
         for (Etudiant e: ets){
-            sum = sum + getMoyForEtudiant(e.getIdEtudiant());
+            sum = sum + getMoyForEtudiant(e.getId());
             // sum = getMoyForEtudiant(e.getIdEtudiant());
         }
         double res = sum/ets.size();

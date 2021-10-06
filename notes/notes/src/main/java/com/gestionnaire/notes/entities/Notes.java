@@ -1,6 +1,7 @@
 package com.gestionnaire.notes.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,7 +24,7 @@ public class Notes implements Serializable {
    // @JsonBackReference
     private Etudiant etudiant;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_matiereId", referencedColumnName = "matiereId")
     //@JsonBackReference
     private Matiere matiere;
@@ -35,11 +36,12 @@ public class Notes implements Serializable {
     public Notes() {
     }
 
-    public Notes(int idNote, int noteEcrit, int noteOral) {
+    public Notes(int idNote, int noteEcrit, int noteOral, Matiere matiere) {
         this.idNote = idNote;
         this.noteEcrit = noteEcrit;
         this.noteOral = noteOral;
         this.noteMoyenne = noteMoyenne;
+        this.matiere = matiere;
     }
 
     public int getIdNote() {
@@ -74,15 +76,20 @@ public class Notes implements Serializable {
         this.noteMoyenne = noteMoyenne;
     }
 
-   /* @Override
-    public String toString() {
-        return "Notes: " +'\n' +
-                "idNote=" + idNote +'\n' +
-                " noteEcrit=" + noteEcrit +'\n' +
-                " noteOral=" + noteOral +'\n' +
-                " noteMoyenne=" + afficherNoteMoyenne() +'\n'
-                ;
-    }*/
+    @JsonIgnore
+    public Matiere getMatiere() {
+        return matiere;
+    }
+
+    public String getNomMatiere() {
+        return matiere.getNomMatiere();
+    }
+
+    public void setMatiere(Matiere matiere) {
+        this.matiere = matiere;
+    }
+
+
     @Override
     public String toString() {
         return

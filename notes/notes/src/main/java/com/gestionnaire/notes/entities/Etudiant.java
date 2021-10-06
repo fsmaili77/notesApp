@@ -23,8 +23,8 @@ public class Etudiant implements Serializable {
     private int id;
     private String nom;
     private String prenom;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dateNaissance;
+    //@DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String dateNaissance;
     private String email;
 
     @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
@@ -32,6 +32,77 @@ public class Etudiant implements Serializable {
     private List<Notes> notesList = new ArrayList<>();
 
     public Etudiant() {
+    }
+
+    public Etudiant(int id, String nom, String prenom, String dateNaissance, String email, List<Notes> notesList) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.email = email;
+        this.notesList = notesList;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(String dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Notes> getNotesList() {
+        return notesList;
+    }
+
+    public void setNotesList(List<Notes> notesList) {
+        this.notesList = notesList;
+    }
+
+    @Override
+    public String toString() {
+        return "Etudiant{" +
+            "id=" + id +
+            ", nom='" + nom + '\'' +
+            ", prenom='" + prenom + '\'' +
+            ", dateNaissance='" + dateNaissance + '\'' +
+            ", email='" + email + '\'' +
+            ", notesList=" + notesList +
+            '}';
+    }
+    /*public Etudiant() {
     }
 
     public Etudiant(int id, String nom, String prenom, Date dateNaissance, String email) {
@@ -90,7 +161,7 @@ public class Etudiant implements Serializable {
         this.notesList = notesList;
     }
 
-    /*@Override
+    *//*@Override
     public String toString() {
         return "Etudiant{" +
                 "idEtudiant=" + idEtudiant +
@@ -100,7 +171,29 @@ public class Etudiant implements Serializable {
                 ", email='" + email + '\'' +
                 ", notesList=" + notesList +
                 '}';
-    }*/
+    }*//* //Moyenne générale d'un étudiant
+    @GetMapping(value = "/Etudiants/{id}/moy")
+    public double getMoyForEtudiant(@PathVariable Integer id) {
+        Etudiant e = etudiantService.findEtudiantById(id);
+        List<Notes> notes = e.getNotesList();
+        double sum = 0;
+        for (Notes n : notes){ sum = sum+n.afficherNoteMoyenne();}
+        double resultat = sum/notes.size();
+
+        return resultat;
+    }
+
+    //Moyenne générale de tous les étudiants (Moyenne de la classe)
+    @GetMapping(value = "/Etudiants/moy")
+    public double getMoyGenerale() {
+        List<Etudiant> ets = etudiantService.findAllEtudiants();
+        double sum = 0;
+        for (Etudiant e: ets){
+            sum = sum + getMoyForEtudiant(e.getId());
+            // sum = getMoyForEtudiant(e.getIdEtudiant());
+        }
+        double res = sum/ets.size();
+        return res;
 
     @Override
     public String toString() {
@@ -111,7 +204,7 @@ public class Etudiant implements Serializable {
             "Date de naissance=" + dateNaissance + '\n' +
             "Email=" + email + '\n'
             ;
-    }
+    }*/
 
     public void addNoteToList(Notes notesL){
         notesList.add(notesL);

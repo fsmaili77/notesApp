@@ -16,9 +16,9 @@ INSERT INTO notes(note_id, note_ecrit, note_oral, note_moyenne, fk_etudiant_id, 
 INSERT INTO notes(note_id, note_ecrit, note_oral, note_moyenne, fk_etudiant_id, fk_matiere_id) VALUES (13, 15, 12, 13.5, 3, 21);
 INSERT INTO notes(note_id, note_ecrit, note_oral, note_moyenne, fk_etudiant_id, fk_matiere_id) VALUES (14, 20, 19, 19.5, 3, 22);
 
-INSERT INTO etudiant(etudiant_id, nom, prenom, email) VALUES (1, "Antoine", "Griezman", "antoine@gmail.fr");
-INSERT INTO etudiant(etudiant_id, nom, prenom, email) VALUES (2, "Kylian", "Mbappé", "kylian@gmail.fr");
-INSERT INTO etudiant(etudiant_id, nom, prenom, email) VALUES (3, "Karim", "Benzema", "karim@gmail.fr");
+INSERT INTO etudiant(etudiant_id, nom, prenom, date_naissance, email) VALUES (1, "Antoine", "Griezman", "02-03-1997", "antoine@gmail.fr");
+INSERT INTO etudiant(etudiant_id, nom, prenom, date_naissance, email) VALUES (2, "Kylian", "Mbappé", "15-06-2000", "kylian@gmail.fr");
+INSERT INTO etudiant(etudiant_id, nom, prenom, date_naissance, email) VALUES (3, "Karim", "Benzema", "23-05-1995", "karim@gmail.fr");
 
 
 

@@ -19,7 +19,8 @@ public class NotesControler {
 
     @GetMapping(value = "/Notes")
     public List<Notes>getNotes() {
-        return notesDao.findAll();
+        List<Notes> notes = notesDao.findAll();
+        return notes;
     }
     @GetMapping(value = "/Notes/{id}")
     public Optional<Notes>getNotesById(@PathVariable Integer id) {
