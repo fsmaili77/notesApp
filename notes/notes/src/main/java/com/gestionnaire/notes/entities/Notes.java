@@ -17,7 +17,7 @@ public class Notes implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notes_generator")
     @SequenceGenerator(name = "notes_generator", sequenceName = "notes_sequence", initialValue = 9)
     @Column(name = "noteId")
-    private int idNote;
+    private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_etudiantId", referencedColumnName = "etudiantId")
@@ -36,8 +36,8 @@ public class Notes implements Serializable {
     public Notes() {
     }
 
-    public Notes(int idNote, int noteEcrit, int noteOral, Matiere matiere) {
-        this.idNote = idNote;
+    public Notes(int id, int noteEcrit, int noteOral, Matiere matiere) {
+        this.id = id;
         this.noteEcrit = noteEcrit;
         this.noteOral = noteOral;
         this.noteMoyenne = noteMoyenne;
@@ -45,11 +45,11 @@ public class Notes implements Serializable {
     }
 
     public int getIdNote() {
-        return idNote;
+        return id;
     }
 
     public void setIdNote(int idNote) {
-        this.idNote = idNote;
+        this.id = idNote;
     }
 
     public int getNoteEcrit() {

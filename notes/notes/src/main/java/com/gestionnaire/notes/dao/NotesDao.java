@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NotesDao extends JpaRepository<Notes, Integer> {
+    Notes findNoteById(Integer id);
+
+    void deleteNoteById(Integer id);
 }

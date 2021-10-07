@@ -15,7 +15,7 @@ public class Matiere implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "matieres_generator")
     @SequenceGenerator(name = "matieres_generator", sequenceName = "matieres_sequence", initialValue = 2)
     @Column(name = "matiereId")
-    private int idMatiere;
+    private int id;
 
     /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_noteId", referencedColumnName = "noteId")
@@ -28,16 +28,16 @@ public class Matiere implements Serializable {
     }
 
     public Matiere(int idMatiere, String nomMatiere) {
-        this.idMatiere = idMatiere;
+        this.id = id;
         this.nomMatiere = nomMatiere;
     }
 
     public int getIdMatiere() {
-        return idMatiere;
+        return id;
     }
 
     public void setIdMatiere(int idMatiere) {
-        this.idMatiere = idMatiere;
+        this.id = idMatiere;
     }
 
     public String getNomMatiere() {
@@ -51,7 +51,7 @@ public class Matiere implements Serializable {
     @Override
     public String toString() {
         return "Matiere{" +
-                "idMatiere=" + idMatiere +
+                "idMatiere=" + id +
                 ", nomMatiere='" + nomMatiere + '\'' +
                 '}';
     }
