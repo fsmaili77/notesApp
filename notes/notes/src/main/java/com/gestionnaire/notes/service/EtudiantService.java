@@ -51,5 +51,16 @@ public class EtudiantService {
 
         return resultat;
     }
+    public double getMoyGenerale() {
+        List<Etudiant> ets = this.findAllEtudiants();
+        double sum = 0;
+        for (Etudiant e: ets){
+            sum = sum + getMoyForEtudiant(e.getId());
+            // sum = getMoyForEtudiant(e.getIdEtudiant());
+        }
+        double res = sum/ets.size();
+        return res;
+
+    }
 
 }
