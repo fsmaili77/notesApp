@@ -46,7 +46,7 @@ public class EtudiantService {
         Etudiant e = this.findEtudiantById(id);
         List<Notes> notes = e.getNotesList();
         double sum = 0;
-        for (Notes n : notes){ sum = sum+n.afficherNoteMoyenne();}
+        for (Notes n : notes){ sum = sum+n.getNoteMoyenne();}
         double resultat = sum/notes.size();
 
         return resultat;

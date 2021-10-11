@@ -36,7 +36,7 @@ public class Notes implements Serializable {
     public Notes() {
     }
 
-    public Notes(int id, int noteEcrit, int noteOral, Matiere matiere) {
+    public Notes(int id, int noteEcrit, int noteOral, double noteMoyenne, Matiere matiere) {
         this.id = id;
         this.noteEcrit = noteEcrit;
         this.noteOral = noteOral;
@@ -69,7 +69,7 @@ public class Notes implements Serializable {
     }
 
     public double getNoteMoyenne() {
-        return noteMoyenne;
+        return ((double) noteEcrit + noteOral)/2;
     }
 
     public void setNoteMoyenne(double noteMoyenne) {
@@ -95,7 +95,7 @@ public class Notes implements Serializable {
         return
             " noteEcrit=" + noteEcrit +'\n' +
             " noteOral=" + noteOral +'\n' +
-            " noteMoyenne=" + afficherNoteMoyenne() + '\n'
+            " noteMoyenne=" + noteMoyenne + '\n'
             ;
     }
     public double afficherNoteMoyenne(){
