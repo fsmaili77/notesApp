@@ -41,7 +41,7 @@ public class EtudiantService {
         etudiantDao.deleteEtudiantById(id);
     }
 
-
+    //Moyenne par étudiant
     public double getMoyForEtudiant(Integer id) {
         Etudiant e = this.findEtudiantById(id);
         List<Notes> notes = e.getNotesList();
@@ -51,6 +51,16 @@ public class EtudiantService {
 
         return resultat;
     }
+
+    public double testGetMoyForEtudiant(List<Notes> notes) {
+        double sum = 0;
+        for (Notes n : notes){ sum = sum+n.getNoteMoyenne();}
+        double resultat = sum/notes.size();
+
+        return resultat;
+    }
+
+    //Moyenne par classe
     public double getMoyGenerale() {
         List<Etudiant> ets = this.findAllEtudiants();
         double sum = 0;

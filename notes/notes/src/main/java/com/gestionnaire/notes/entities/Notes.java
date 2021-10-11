@@ -29,8 +29,8 @@ public class Notes implements Serializable {
     //@JsonBackReference
     private Matiere matiere;
 
-    private int noteEcrit;
-    private int noteOral;
+    private double noteEcrit;
+    private double noteOral;
     private double noteMoyenne;
 
     public Notes() {
@@ -52,7 +52,7 @@ public class Notes implements Serializable {
         this.id = idNote;
     }
 
-    public int getNoteEcrit() {
+    public double getNoteEcrit() {
         return noteEcrit;
     }
 
@@ -60,7 +60,7 @@ public class Notes implements Serializable {
         this.noteEcrit = noteEcrit;
     }
 
-    public int getNoteOral() {
+    public  double getNoteOral() {
         return noteOral;
     }
 
@@ -69,7 +69,7 @@ public class Notes implements Serializable {
     }
 
     public double getNoteMoyenne() {
-        return ((double) noteEcrit + noteOral)/2;
+        return (noteEcrit + noteOral)/2;
     }
 
     public void setNoteMoyenne(double noteMoyenne) {
