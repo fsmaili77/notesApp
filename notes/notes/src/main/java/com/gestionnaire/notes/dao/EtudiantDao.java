@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-
+@Repository
 public interface EtudiantDao extends JpaRepository<Etudiant, Integer> {
 
     void deleteEtudiantById(Integer id);

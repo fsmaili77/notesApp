@@ -54,9 +54,9 @@ class MoyenneEtudiant {
            // System.out.println(no);
         }
         // ACT
-        double noteMoyenneEtudiant = sum/ no.size();
+        double noteMoyenneGeneraleEtudiant = sum/ no.size();
         // ASSERT
-         assertEquals(16, noteMoyenneEtudiant );
+         assertEquals(16, noteMoyenneGeneraleEtudiant );
     }
 
 

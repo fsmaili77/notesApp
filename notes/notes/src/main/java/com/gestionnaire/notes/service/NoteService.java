@@ -33,4 +33,25 @@ public class NoteService {
     public void deleteNote(Integer id) {
         notesDao.deleteNoteById(id);
     }
+    /*public double testGetMoyForEtudiant(List<Notes> notes) {
+        double sum = 0;
+        for (Notes n : notes){ sum = sum+n.getNoteMoyenne();}
+        double resultat = sum/notes.size();
+
+        return resultat;
+    }*/
+    //Moyenne par étudiant
+    public double getMoyenneGeneraleEtudiant(List<Notes> notes) {
+        double sum = 0;
+//        for (Notes n : notes) {
+//            sum = sum+n.getNoteMoyenne();
+//        }
+        for (int i = 0; i < notes.size(); i++) {
+            sum += notes.get(i).getNoteMoyenne();
+        }
+        double resultat = sum / notes.size();
+
+        double resultatFinal = Math.round(resultat);
+        return resultat;
+    }
 }

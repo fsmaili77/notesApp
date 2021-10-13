@@ -71,17 +71,19 @@ public class NotesAppMain {
 
         Notes notes = new Notes(1, 12, 16, 14, new Matiere(1, "Francais"));
         Notes notes1 = new Notes(1, 11, 13, 12, new Matiere());
+        Notes notes3 = new Notes(1, 11, 13, 12, new Matiere());
 
         Etudiant e1 = new Etudiant(1, "Pogba", "Paul", "12-06-1999", "pogba@free.fr", new ArrayList<>());
         Etudiant e2 = new Etudiant(2, "Kante", "Ngolo", "12-06-1998", "kante@free.fr", new ArrayList<>());
 
         e2.addNoteToList(notes);
         e2.addNoteToList(notes1);
+        e2.addNoteToList(notes3);
+        System.out.println(notes.getMoyenneGeneraleEtudiant(List.of(notes, notes3, notes1)));
 
 
         System.out.println(e1);
         System.out.println(e2);
-
 
     }
 

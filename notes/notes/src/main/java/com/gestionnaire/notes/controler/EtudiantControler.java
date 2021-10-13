@@ -1,8 +1,12 @@
 package com.gestionnaire.notes.controler;
 
+import com.gestionnaire.notes.FrontObjects.NotesObject;
+import com.gestionnaire.notes.dao.EtudiantDao;
+import com.gestionnaire.notes.dao.NotesDao;
 import com.gestionnaire.notes.entities.Etudiant;
 import com.gestionnaire.notes.entities.Notes;
 import com.gestionnaire.notes.service.EtudiantService;
+import com.gestionnaire.notes.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +23,17 @@ import java.util.Optional;
 public class EtudiantControler {
     @Autowired
     private final EtudiantService etudiantService;
+    @Autowired
+    private final NoteService noteService;
 
-    public EtudiantControler(EtudiantService etudiantService) {
+    @Autowired
+    private EtudiantDao etudiantDao;
+    @Autowired
+    private NotesDao notesDao;
+
+    public EtudiantControler(EtudiantService etudiantService, NoteService noteService) {
         this.etudiantService = etudiantService;
+        this.noteService = noteService;
     }
 
 
@@ -74,11 +86,15 @@ public class EtudiantControler {
 
     }
 
-   /*
-    //moyenne generale pour deux étudiants
-    @GetMapping(value = "/Etudiants/moy")
-    public double getMoyGeneraleForEtudiants() {
+    //get d'un étudiants avec ses moyennes et la moyenne globale
+    @GetMapping(value = "/Etudiant/allMoyenne/{id_etudiant}")
+    public NotesObject getAllMoyenneForEtudiant(@PathVariable int id_etudiant) {
+        Optional<Etudiant> etudiant = etudiantDao.findById(id_etudiant);
+        List<Notes> notes = notesDao.findAllByEtudiant_Id(id_etudiant);
+        double moyenneGlobale = noteService.getMoyenneGeneraleEtudiant(notes);
 
-        return ( this.getMoyForEtudiant(1)+this.getMoyForEtudiant(2))/2;
-    }*/
+        return new NotesObject(etudiant, notes, moyenneGlobale);
+    }
+
+
 }

@@ -51,6 +51,14 @@ public class EtudiantService {
 
         return resultat;
     }
+    //Moyenne par étudiant
+    public double getMoyForEtudiantByNotes(List<Notes> notes) {
+        double sum = 0;
+        for (Notes n : notes){ sum = sum+n.getNoteMoyenne();}
+        double resultat = sum/notes.size();
+
+        return resultat;
+    }
 
     public double testGetMoyForEtudiant(List<Notes> notes) {
         double sum = 0;

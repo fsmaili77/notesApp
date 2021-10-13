@@ -2,6 +2,7 @@ package com.gestionnaire.notes.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.gestionnaire.notes.FrontObjects.NotesObject;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -92,15 +93,45 @@ public class Notes implements Serializable {
 
     @Override
     public String toString() {
-        return
-            " noteEcrit=" + noteEcrit +'\n' +
-            " noteOral=" + noteOral +'\n' +
-            " noteMoyenne=" + noteMoyenne + '\n'
-            ;
+        return "Notes{" +
+            "etudiant=" + etudiant +
+            ", matiere=" + matiere +
+            ", noteEcrit=" + noteEcrit +
+            ", noteOral=" + noteOral +
+            ", noteMoyenne=" + noteMoyenne +
+            '}';
     }
+
     public double afficherNoteMoyenne(){
         return ((double) noteEcrit + noteOral)/2;
     }
 
+    //Moyenne par étudiant
+    public double getMoyenneGeneraleEtudiant(List<Notes> notes) {
+        double sum = 0;
+//        for (Notes n : notes) {
+//            sum = sum+n.getNoteMoyenne();
+//        }
+        for (int i = 0; i < notes.size(); i++) {
+            sum += notes.get(i).getNoteMoyenne();
+        }
+        double resultat = sum / notes.size();
 
+        return resultat;
+    }
+
+    //Moyenne par classe
+    public double getMoyenneGeneraleClasse(List<NotesObject> notesObjects) {
+        double sumMoyenneClasse = 0;
+        int sumnoteListSizeTotal = 0;
+        for (int iObject = 0; iObject < notesObjects.size(); iObject++) {
+            sumnoteListSizeTotal += notesObjects.get(iObject).getNotesList().size();
+            for (int i = 0; i < notesObjects.get(iObject).getNotesList().size(); i++) {
+                sumMoyenneClasse += notesObjects.get(iObject).getNotesList().get(i).getNoteMoyenne();
+            }
+        }
+        double resultat = sumMoyenneClasse / sumnoteListSizeTotal;
+
+        return resultat;
+    }
 }
