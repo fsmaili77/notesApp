@@ -1,5 +1,6 @@
 package com.gestionnaire.notes.controler;
 
+import com.gestionnaire.notes.FrontObjects.MoyenneMatiereClasse;
 import com.gestionnaire.notes.FrontObjects.NotesObject;
 import com.gestionnaire.notes.dao.EtudiantDao;
 import com.gestionnaire.notes.dao.NotesDao;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -96,5 +98,10 @@ public class EtudiantControler {
         return new NotesObject(etudiant, notes, moyenneGlobale);
     }
 
-
+    @GetMapping(value = "/classe/allMoyenne/{nom_matiere}")
+    public MoyenneMatiereClasse getMoyenneOfClasseForMatiere(@PathVariable String nom_matiere) {
+        System.out.println(nom_matiere);
+        List<Notes> notesList = notesDao.findAllByMatiere_NomMatiere(nom_matiere);
+        return new MoyenneMatiereClasse( nom_matiere, notesList);
+    }
 }

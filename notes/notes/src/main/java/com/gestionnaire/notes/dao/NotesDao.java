@@ -13,4 +13,5 @@ public interface NotesDao extends JpaRepository<Notes, Integer> {
     void deleteNoteById(Integer id);
 
     List<Notes> findAllByEtudiant_Id(int id_etudiant);
+    List<Notes> findAllByMatiere_NomMatiere(String nom_matiere);
 }
