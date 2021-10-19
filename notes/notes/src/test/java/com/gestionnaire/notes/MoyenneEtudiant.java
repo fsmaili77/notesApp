@@ -16,7 +16,7 @@ class MoyenneEtudiant {
 
 
 	@Test
-    void getNoteMoyenne() {
+    void getNoteMoyenneMatiere() {
 
         // ARRANGE
         Notes notes = new Notes();

@@ -64,8 +64,9 @@ public class NotesAppMain {
         System.out.println(e2.getNotesList().get(0));
         System.out.println("Matière : "+anglais.getNomMatiere());
         System.out.println(e2.getNotesList().get(1));*/
+        //////////////////////////////////////////////////////////////
 
-        Matiere francais = new Matiere(1, "Francais");
+        /*Matiere francais = new Matiere(1, "Francais");
         Matiere anglais = new Matiere(2, "Anglais");
 
 
@@ -83,7 +84,7 @@ public class NotesAppMain {
 
 
         System.out.println(e1);
-        System.out.println(e2);
+        System.out.println(e2);*/
 
     }
 
