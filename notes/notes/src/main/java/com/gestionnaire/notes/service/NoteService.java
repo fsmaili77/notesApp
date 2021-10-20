@@ -54,4 +54,17 @@ public class NoteService {
         double resultatFinal = Math.round(resultat);
         return resultat;
     }
+    public double getMoyenneGeneraleClasse(List<Notes> notes) {
+        double sum = 0;
+//        for (Notes n : notes) {
+//            sum = sum+n.getNoteMoyenne();
+//        }
+        for (int i = 0; i < notes.size(); i++) {
+            sum += notes.get(i).getNoteMoyenne();
+        }
+        double resultat = sum / notes.size();
+
+        double resultatFinal = Math.round(resultat);
+        return resultat;
+    }
 }

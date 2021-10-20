@@ -87,7 +87,17 @@ public class EtudiantControler {
         return res;
 
     }
-
+    @GetMapping(value = "/Etudiant/moyenneGeneraleClasse")
+    public double getMoyenneGeneraleClasse() {
+        List<Etudiant> ets = etudiantService.findAllEtudiants();
+        double sum = 0;
+        for (Etudiant e: ets){
+            sum = sum + getMoyForEtudiant(e.getId());
+            // sum = getMoyForEtudiant(e.getIdEtudiant());
+        }
+        double res = sum/ets.size();
+        return res;
+    }
     //get d'un étudiants avec ses moyennes et la moyenne globale
     @GetMapping(value = "/Etudiant/allMoyenne/{id_etudiant}")
     public NotesObject getAllMoyenneForEtudiant(@PathVariable int id_etudiant) {
