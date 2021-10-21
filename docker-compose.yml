@@ -1,0 +1,30 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: '3.3'
+
+# Define services
+services:
+  # App bdd service
+  docker-mysql:
+    container_name: bdd-docker
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=new_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3308:3306
+    restart: always
+  # App backend service
+  java-back:
+    container_name: noteApp-back-dev
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://bdd-docker:3306/new_db?createDatabaseIfNotExist=true
+    depends_on:
+      - docker-mysql
