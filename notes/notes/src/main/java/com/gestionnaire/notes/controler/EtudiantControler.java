@@ -5,6 +5,7 @@ import com.gestionnaire.notes.FrontObjects.NotesObject;
 import com.gestionnaire.notes.dao.EtudiantDao;
 import com.gestionnaire.notes.dao.NotesDao;
 import com.gestionnaire.notes.entities.Etudiant;
+import com.gestionnaire.notes.entities.Matiere;
 import com.gestionnaire.notes.entities.Notes;
 import com.gestionnaire.notes.service.EtudiantService;
 import com.gestionnaire.notes.service.NoteService;
@@ -44,16 +45,30 @@ public class EtudiantControler {
         List<Etudiant> etudiants = etudiantService.findAllEtudiants();
         return new ResponseEntity<>(etudiants, HttpStatus.OK);
     }
-    @GetMapping("/find/{id}")
+    /*@GetMapping("/find/{id}")
     public ResponseEntity<Etudiant> getEtudiantById(@PathVariable("id") Integer id) {
         Etudiant etudiant = etudiantService.findEtudiantById(id);
         return new ResponseEntity<>(etudiant, HttpStatus.OK);
+    }*/
+    @GetMapping(value = "/Etudiants/{id}")
+    public Optional<Etudiant>getEtudiantsById(@PathVariable Integer id) {
+        return etudiantDao.findById(id);
     }
 
     @PostMapping("/add")
     public ResponseEntity<Etudiant> addEtudiant(@RequestBody Etudiant etudiant){
         Etudiant newEtudiant = etudiantService.addEtudiant(etudiant);
         return new ResponseEntity<>(newEtudiant, HttpStatus.CREATED);
+    }
+    @PostMapping(value = "Etudiants/request")
+    public List<Etudiant> requestEtudiant(@RequestBody Notes notes) {
+        List<Etudiant> library = etudiantDao.findAll();
+        List<Etudiant> filtered = new ArrayList<>();
+        double noteEcrit = notes.getNoteEcrit();
+        double noteOral = notes.getNoteOral();
+        double noteMoyenne = notes.getNoteMoyenne();
+        Matiere matiere = notes.getMatiere();
+        return library;
     }
 
     @PutMapping("/update")
