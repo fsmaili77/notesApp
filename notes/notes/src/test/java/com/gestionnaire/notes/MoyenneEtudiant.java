@@ -16,7 +16,7 @@ class MoyenneEtudiant {
 
 
 	@Test
-    void getNoteMoyenneMatiere() {
+    void shouldGetNoteMoyenneMatiere() {
 
         // ARRANGE
         Notes notes = new Notes();
@@ -31,7 +31,7 @@ class MoyenneEtudiant {
     }
 
     @Test
-    void getNoteMoyenneGenerale() {
+    void shouldGetNoteMoyenneGenerale() {
         // ARRANGE
         Notes notes = new Notes();
         Notes notes1 = new Notes();
